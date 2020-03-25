@@ -4,14 +4,15 @@ from email.utils import formatdate
 from email.mime.multipart import MIMEMultipart
 from email.mime.image     import MIMEImage
 from datetime import datetime
+import message
 
 FROM_ADDRESS = ''
 MY_PASSWORD = ''
 TO_ADDRESS = ''
 BCC = ''
 PICTURE = 'picture.png'
-SUBJECT = '動きを検知\n' + datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-BODY = '動きを検知しました。\n確認してください'
+SUBJECT = message.getMsg(message.MAIL_SUBJECT, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+BODY = message.MAIL_BODY
 
 
 def create_message(from_addr, to_addr, bcc_addrs, subject, body, picture ):
@@ -46,6 +47,8 @@ if __name__ == '__main__':
     to_addr = TO_ADDRESS
     subject = SUBJECT
     body = BODY
+    print(subject)
+    print(body)
 
     msg = create_message(FROM_ADDRESS, to_addr, BCC, subject, body,PICTURE)
     result =  send(FROM_ADDRESS, to_addr, msg)
