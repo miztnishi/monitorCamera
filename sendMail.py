@@ -11,7 +11,7 @@ MY_PASSWORD = ''
 TO_ADDRESS = ''
 BCC = ''
 PICTURE = 'picture.png'
-SUBJECT = message.getMsg(message.MAIL_SUBJECT, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+SUBJECT = message.getMsgWithArg(message.MAIL_SUBJECT, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
 BODY = message.MAIL_BODY
 
 
